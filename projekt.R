@@ -24,7 +24,7 @@ world <- map_data("world")
 world$variable <- casesDifference[match(world$region,chosenDay$location)]
 
 world_map <- ggplot(world, aes(x=long, y=lat)) + 
-  geom_polygon(aes(group=group, fill=variable), col="white",lwd=0
+  geom_polygon(aes(group=group, fill=variable), col="white",lwd=0.1
                )
 
 world_map + scale_fill_gradient(low='darkblue', high='red')
