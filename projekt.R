@@ -17,15 +17,19 @@ dayBefore[is.na(dayBefore)] = 0
 dayBefore$location[dayBefore$location=="United States"] = "USA"
 dayBefore$location[dayBefore$location=="United Kingdom"] = "UK"
 
-casesDifference = chosenDay$new_cases - dayBefore$new_cases
+casesDifference =(chosenDay$new_cases - dayBefore$new_cases) 
 
 world <- map_data("world")
 
 world$variable <- casesDifference[match(world$region,chosenDay$location)]
-
+breaks = c(0)
 world_map <- ggplot(world, aes(x=long, y=lat)) + 
-  geom_polygon(aes(group=group, fill=variable), col="white",lwd=0.1
-               )
-
+  geom_polygon(aes(group=group, fill=variable), col="white",lwd=0.1)
 world_map + scale_fill_gradient(low='darkblue', high='red')
+
+#Moguće rješenje za problem sa bojama
+# colors prima niz boja 
+# scales::rescale prima brojeve koji označavaju intervale za pojedinu boju
+#world_map + scale_fill_gradientn(colors = c("#1703B9","#0623D8","#0748EB","#0C6FDE","#0ACFFF","#F9FCFA", "#FFA28B","#fc8365","#FD7553","#FE5024","#FC3807","#FC3333", "#FC0400"),
+                          #       values =scales::rescale(c(-2000,-1600,-1200, -800,- 400,0,1, 1000,2000,3000,4000,5000,6000)))
 
