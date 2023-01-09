@@ -21,7 +21,7 @@ ui <- fluidPage(
   theme = shinytheme("lumen"),
   titlePanel("Covid 19 data"),
   sidebarLayout(
-    sidebarPanel(width = "100%",
+    sidebarPanel(width = 3, 
       # Select date range to be plotted
       dateRangeInput(
         "date",
@@ -34,8 +34,8 @@ ui <- fluidPage(
     ),
     
     # Output: Description, lineplot, and reference
-    mainPanel(
-      plotOutput(outputId = "lineplot", width = "90vw", height = '50vh'),
+    mainPanel( width = 9,
+      plotOutput(outputId = "lineplot", width = "90%"),
     )
   )
 )
