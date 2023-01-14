@@ -48,12 +48,21 @@ server <- function(input, output) {
       dayBefore <- filter(data, date == input$date[1])
       
       chosenDay[is.na(chosenDay)] = 0
-      chosenDay$location[chosenDay$location == "United States"] = "USA"
-      chosenDay$location[chosenDay$location == "United Kingdom"] = "UK"
-      
-      dayBefore[is.na(dayBefore)] = 0
-      dayBefore$location[dayBefore$location == "United States"] = "USA"
-      dayBefore$location[dayBefore$location == "United Kingdom"] = "UK"
+    chosenDay$location[chosenDay$location == "United States"] = "USA"
+    chosenDay$location[chosenDay$location == "United Kingdom"] = "UK"
+    chosenDay$location[chosenDay$location == "Cote d'Ivoire"] = "Ivory Coast"
+    chosenDay$location[chosenDay$location == "Democratic Republic of Congo"] = "Democratic Republic of the Congo"
+    chosenDay$location[chosenDay$location == "Congo"] = "Republic of Congo"
+    
+    # Zemlje koje nisu pokrivene COVID datasetom
+    # Turkmenistan, Luxembourg, Yemen, Zambia, Zimbabwe, French Guiana, Antarctica
+    
+    dayBefore[is.na(dayBefore)] = 0
+    dayBefore$location[dayBefore$location == "United States"] = "USA"
+    dayBefore$location[dayBefore$location == "United Kingdom"] = "UK"
+    dayBefore$location[dayBefore$location == "Cote d'Ivoire"] = "Ivory Coast"
+    dayBefore$location[dayBefore$location == "Democratic Republic of Congo"] = "Democratic Republic of the Congo"
+    dayBefore$location[dayBefore$location == "Congo"] = "Republic of Congo"
       
       casesDifference = (chosenDay$new_cases - dayBefore$new_cases)
       
