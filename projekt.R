@@ -47,7 +47,7 @@ server <- function(input, output) {
     chosenDay <- filter(data, date == input$date[2])
     dayBefore <- filter(data, date == input$date[1])
     
-    chosenDay[is.na(chosenDay)] = 0
+    #chosenDay[is.na(chosenDay)] = 0
     chosenDay$location[chosenDay$location == "United States"] = "USA"
     chosenDay$location[chosenDay$location == "United Kingdom"] = "UK"
     chosenDay$location[chosenDay$location == "Cote d'Ivoire"] = "Ivory Coast"
@@ -57,7 +57,7 @@ server <- function(input, output) {
     # Zemlje koje nisu pokrivene COVID datasetom
     # Turkmenistan, Luxembourg, Yemen, Zambia, Zimbabwe, French Guiana, Antarctica
     
-    dayBefore[is.na(dayBefore)] = 0
+    #dayBefore[is.na(dayBefore)] = 0
     dayBefore$location[dayBefore$location == "United States"] = "USA"
     dayBefore$location[dayBefore$location == "United Kingdom"] = "UK"
     dayBefore$location[dayBefore$location == "Cote d'Ivoire"] = "Ivory Coast"
